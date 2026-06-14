@@ -136,7 +136,7 @@ class Database {
           id: 1,
           type: 1,
           isEnabled: true,
-          minVersion: "0.56",
+          minVersion: "0.44",
           startTime: new Date("2025-07-24T10:00:00Z"),
           endTime: new Date("2025-08-07T10:00:00Z"),
           nameKey: "Ranked 1x1",
@@ -313,9 +313,9 @@ class UserModel {
   static async create(ip, deviceId, platformData = {}) {
   const now = new Date();
   const userId = Math.floor(Math.random() * 999);
-  const username = 'StumblePeak#<sup>' + userId;
+  const username = 'LegendsPlayer<color=yellow><sup>' + userId;
   
-  let ipCountry = 'US';
+  let ipCountry = 'IN';
   let ipRegion = 'NA';
   
   try {
