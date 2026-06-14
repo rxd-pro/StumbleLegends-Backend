@@ -25,7 +25,7 @@ const SharedData = require("./shared.json");
 class Database {
   constructor() {
     this.mongoUri = process.env.mongoUri;
-    this.dbName = "StumbleDB";
+    this.dbName = "StumbleLegends";
     this.client = null;
     this.db = null;
     this.collections = {
