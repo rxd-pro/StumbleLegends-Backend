@@ -40,7 +40,7 @@ module.exports = function(app) {
     }));
 
     // --- 2.5 LOG SILENCERS (CLEANING UP THE 404 SPAM) ---
-    app.all('/custom-maps/moderation/check', (req, res) => res.status(200).json({}));
+    app.all('/custom-maps/moderation/check', (req, res) => res.status(200).json({})); 
     app.all('/custom-maps/my', emptyUgc);
     app.all('/custom-maps/code/:code', emptyUgc);
     app.all('/collection-events/me', emptyUgc);
@@ -48,8 +48,10 @@ module.exports = function(app) {
     app.all('/user/inventory/selection', emptyUgc);
     app.all('/economy/offers/purchasedV2/', emptyUgc);
     app.all('/user/creator-codes', emptyUgc);
-    app.all('/pusher/authenticate', emptyUgc);
-    app.all('/pusher/authorize', emptyUgc);
+    
+    // 👇 THE PUSHER FIX: Give Pusher a fake token instead of an empty list!
+    app.all('/pusher/authenticate', (req, res) => res.status(200).json({ auth: "fake_auth:fake_secret" }));
+    app.all('/pusher/authorize', (req, res) => res.status(200).json({ auth: "fake_auth:fake_secret" }));
 
     // --- 3. THE HTML KILLER (MUST BE LAST) ---
     app.use((req, res, next) => {
