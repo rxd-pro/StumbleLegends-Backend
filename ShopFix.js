@@ -40,6 +40,7 @@ module.exports = function(app) {
     }));
 
     // --- 2.5 LOG SILENCERS (CLEANING UP THE 404 SPAM) ---
+    app.all('/custom-maps/moderation/check', (req, res) => res.status(200).json({}));
     app.all('/custom-maps/my', emptyUgc);
     app.all('/custom-maps/code/:code', emptyUgc);
     app.all('/collection-events/me', emptyUgc);
