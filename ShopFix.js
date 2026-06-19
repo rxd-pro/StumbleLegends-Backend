@@ -2,7 +2,7 @@ const { EconomyController } = require('./BackendUtils');
 const Console = require("./ConsoleUtils");
 
 module.exports = function(app) {
-    Console.log("System", "🛠️ Injecting Ultimate Shop & Workshop Fixes (DEBUG MODE)...");
+    Console.log("System", "🛠️ Injecting Bad Shop & Workshop Fixes (DEBUG MODE)...");
 
     // --- 1. SHOP FIXES ---
     app.all('/economy/purchase/:item', EconomyController.purchase); 
@@ -45,9 +45,11 @@ module.exports = function(app) {
     }));
 
     // --- 2.5 LOG SILENCERS (NOW WITH TRACKING) ---
+    
+    // 👇 THIS IS THE FIX THE GAME WANTS: EMPTY BRACKETS!
     app.all('/custom-maps/moderation/check', (req, res) => {
-        Console.log("Debug", "Moderation check triggered!");
-        res.status(200).json({ isValid: true, isProfane: false, status: "approved" }); 
+        Console.log("Debug", "Moderation check bypassed!");
+        res.status(200).json({}); 
     }); 
     
     app.all('/custom-maps/my', emptyUgc);
